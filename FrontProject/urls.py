@@ -31,5 +31,5 @@ urlpatterns = [
     path('week-archive/<week>/', WeekArchiveViewExample.as_view(), name='week_archive'),
     path('create/', CreateViewExample.as_view(), name='create'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
-    path('update/<pk>/', UpdateExample.as_view(), name='update')
+    path('update/<pk>/', UpdateExample.as_view(), name='update'),
     ]
