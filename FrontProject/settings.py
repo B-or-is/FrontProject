@@ -70,7 +70,8 @@ TEMPLATES = [
     },
     {
         'BACKEND': 'jinja_app.my_backend.MyBackend',
-        'DIRS': [os.path.join(BASE_DIR, 'jinja_app/templates')],
+        'DIRS': [BASE_DIR / 'jinja_app/templates'],
+        # 'DIRS': [os.path.join(BASE_DIR, 'jinja_app/templates')],
     }
 ]
 
