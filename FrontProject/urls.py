@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from front_1.views import Index, Report, LoginExample, \
     ListExample, DetailViewExample, DateDetailViewExample, \
     WeekArchiveViewExample, DeleteExample, CreateViewExample, UpdateExample
@@ -32,4 +32,5 @@ urlpatterns = [
     path('create/', CreateViewExample.as_view(), name='create'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
     path('update/<pk>/', UpdateExample.as_view(), name='update'),
+    path('template/', include('jinja_app.urls')),
     ]

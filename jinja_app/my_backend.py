@@ -7,7 +7,7 @@ from django.template.backends.django import Engine
 
 
 class MyBackend(BaseEngine):
-    app_dirname = 'example_1'
+    app_dirname = 'front_1'
 
     def __init__(self, params):
         params = params.copy()

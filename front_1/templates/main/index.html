@@ -16,12 +16,21 @@
 </head>
 <body>
 {% include "main/header.html" %}
+    <h4>Выберите:</h4>
+{#    <a href="index.html"><h1>На главную страницу</h1></a>#}
+    Тест Front-End'а:
+    <ul>
+        <li><a href='admin'>Панель администратора</a></li>
+        <li><a href='template/jinja2/'>Тест Jinja</a></li>
+{#        <li><a href={% url 'signup2'    %}>Профиль пользователя</a></li>#}
+    </ul>
 {% block content %}
     <div class="jumbotron text-center">
         <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
+        {# <p>Resize this responsive page to see the effect!</p> #}
+        <p>10 случайных слов с <a href="https://raw.githubusercontent.com/sindresorhus/mnemonic-words/master/words.json">этого ресурса</a>:</p>
         {% for i in some_data %}
-            <p>{{ i }}</p>
+            {{ i }}
         {% endfor %}
     </div>
 {% endblock %}
