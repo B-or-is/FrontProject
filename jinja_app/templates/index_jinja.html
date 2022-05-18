@@ -8,5 +8,12 @@
 <h1>Hi, Jinja Template</h1>
 <h2>Hello, {{ user_data.name }}</h2>
 <h2>It's {{ my_template }}</h2>
+<ul>
+    {% for key, value in user_info.items %}
+        <dt>{{ loop.index }}</dt>
+        <dt>{{ key }}</dt>
+        <dd>{{ value }}</dd>
+    {% endfor %}
+</ul>
 </body>
 </html>
