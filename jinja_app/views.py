@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 def jinja_test(request):
     print("It's Jinja template")
-    return render(request, 'index_jinja.html',
+    return render(request, 'jinja_app/index_jinja.html',
                   context={'user_data': {'name': 'Jinja Template (my work)!'},
                            'user_info': {'key1': 'value1',
                                          'key2': 'value2'}},
@@ -18,7 +18,7 @@ def jinja_test(request):
 
 def django_test(request):
     print("It's Django template")
-    return render(request, 'index_django.html',
+    return render(request, 'jinja_app/index_django.html',
                   context={'user_data': [{'name': 'First'},
                                          {'name': 'Second'}]})
     # return render(request, 'index_django.html',
