@@ -68,17 +68,16 @@ TEMPLATES = [
             ],
         },
     },
-    # {
-    #     'BACKEND': 'django.template.backends.jinja2.Jinja2',
-    #     'DIRS': [BASE_DIR / 'jinja_app/templates'],
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [BASE_DIR / 'jinja_app/templates'],
     #     'APP_DIRS': True,
     #     'OPTIONS': {
     #         'environment': 'jinja_app.jinja2.environment'
     #     },
-    # },
-    {
-        'BACKEND': 'jinja_app.my_backend.MyBackend',
-        'DIRS': [BASE_DIR / 'jinja_app/templates'],
+
+        # для создания собственного backend-а под шаблон
+        # 'BACKEND': 'jinja_app.my_backend.MyBackend',
         # 'DIRS': [os.path.join(BASE_DIR, 'jinja_app/templates')],
     }
 ]

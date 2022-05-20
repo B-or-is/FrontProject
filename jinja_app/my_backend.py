@@ -28,11 +28,12 @@ class Template:
     def __init__(self, template):
         self.template = template
 
+    # можно переопределять контекст, добавлять новые значения в него и т.п.
     def render(self, context=None, request=None):
         if context is None:
             context = {}
         if request is not None:
             context['request'] = request
-            context['my_template'] = 'this is custom'
-        print(context)
+            context['my_template'] = 'this is custom'   # переопределение template
+        # print(context)
         return self.template.render(context)

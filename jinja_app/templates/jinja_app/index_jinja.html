@@ -5,15 +5,161 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Hi, Jinja Template</h1>
-<h2>Hello, {{ user_data.name }}</h2>
-<h2>It's {{ my_template }}</h2>
+<h3>Hi, Jinja2 (примеры использования)</h3>
+{{ lipsum(2) }}
+
+{% raw %}
+    <h4>Пример вывода информации без изменений, включая служебные символы: "{%  {{ }} %} и др."
+    <h4>
+    {% ... %} for Statements
+
+    {{ ... }} for Expressions to print to the template output
+
+    ...  for Comments not included in the template output
+
+    # ... ## for Line Statements
+{% endraw %}
+
+
+<h4>Пример с <b>for</b>:</h4>
 <ul>
-    {% for key, value in user_info.items %}
-        <dt>{{ loop.index }}</dt>
-        <dt>{{ key }}</dt>
-        <dd>{{ value }}</dd>
+    {% for user in user_data if user.name.startswith('И') %}
+        <li>{{ user.name }}</li>
+        {% else %}
+        <li><em>No user found</em></li>
     {% endfor %}
 </ul>
+
+<h4>Пример с <b>loop</b>:</h4>
+{% for key, value in user_info.items() %}
+    {#    "{{ loop.cycle('odd', 'even') }}"#}
+    {#    loop.first #}
+    {#    loop.last #}
+    <dt>{{ loop.index0 }}</dt>
+    <dt>{{ key }}, {{ value }}</dt>
+{% endfor %}
+
+<h4> Пример MACROS (работа с функциями)</h4>
+{% macro input(name, value='', type='text', size=20) %}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+{% endmacro %}
+
+<p>{{ input('username') }}</p>
+<p>{{ input('password', type='text', size=200) }}</p>
+<p>{{ input('password', type='password') }}</p>
+<p>{{ input('other', type='file', size=100) }}</p>
+<p>{{ input.arguments }}</p>
+
+{% macro input_count(count) %}
+    {% for x in range(count) %}
+        <p>{{ caller(x) }} {{ x }}</p>
+    {% endfor %}
+{% endmacro %}
+{% call(y) input_count(5) %}
+    Some text {{ y+2 }}
+{% endcall %}
+
+<h4>Пример Set (создание и использование переменных)</h4>
+{% set my_var = [1,2,100,4,5, 27] %}
+
+{% set current_var = namespace(value=0) %}
+<p>current_var before {{ current_var.value }}</p>
+{% for i in my_var %}
+    <p>{{ i }}</p>
+    {% set current_var.value = i %}
+{% endfor %}
+<p>current_var after {{ current_var.value }}</p>
+
+{% set block_var %}
+    <li><a href="/">Main</a>
+    <li><a href="/login">Login</a>
+{% endset %}
+{{ block_var }}
+
+{% set message = "my TeXt" %}
+{% set reply | upper %}
+    You wrote {{ message }}
+{% endset %}
+{{ reply }}
+
+<h4>Math</h4>
++ - / // % * **<br>
+Comparisons == != > >= < <=<br>
+Logic "and" "or" "not"<br>
+
+<h4>Filters</h4>
+
+{% set number = -10.0000112 %}
+<p>{{ number|abs }}</p>
+<p>{{ message |capitalize }}</p>
+<p>{{ message |upper }}</p>
+<p>{{ message |lower }}</p>
+<p>{{ message |length }}</p>
+<p>{{ my_var |sort }}</p>
+<p>{{ my_var |reverse }}</p>
+<p>{{ my_var |first }}</p>
+<p>{{ my_var |min }}</p>
+<p>{{ my_var |max }}</p>
+<p>{{ my_var |random }}</p>
+<p>{{ my_var |reject("odd") }}</p>
+<p>{{ my_var |sum }}</p>
+<p>{{ user_data | tojson }}</p>
+{#<p>{{ user_data |pprint(verbose=True) }}</p>#}
+
+<h4>Tests</h4>
+<p>{{ 'boolean' if True is boolean else 'not boolean' }}</p>
+<p>{{ 'callable' if ['1','2'] is callable else 'not callable' }}</p>
+<p>{{ 'iterable' if ['1','2'] is iterable else 'not iterable' }}</p>
+<p>{{ 'defined' if number_in is defined else 'not defined' }}</p>
+<p>{{ 'eq' if 2 is eq 3 else 'not eq' }}</p>
+<p>{{ 'even' if 2 is even else 'not even' }}</p>
+
+<h4> Global Functions </h4>
+{% for number in range(5, 10) %}
+    <button>{{ number }}</button>
+{% endfor %}
+
+<p>{{ lipsum(1) }}</p>
+<p>{{ dict(foo='bar') }}</p>
+
+<ul>
+    {% set cycle = cycler("odd", "even") %}
+    {% for numb in range(10) %}
+        <li>{{ numb }}</li>
+        <li>Next {{ cycle.next() }}</li>
+        <li>Current {{ cycle.current }}</li>
+        {% if numb == 8 %}
+            <li>Reset {{ cycle.reset() }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% set pipe = joiner("|") %}
+{% set categories = 'categories' %}
+{% set author = [1,2,3,4,5,6,] %}
+{% set can_edit = 'can_edit' %}
+{% if categories %} {{ pipe() }}
+    Categories: {{ categories|join(", ") }}
+{% endif %}
+{% if author %} {{ pipe() }}
+    Author: {{ author[0] }}
+{% endif %}
+{% if can_edit %} {{ pipe() }}
+    <a href="?action=edit">Edit</a>
+{% endif %}
+
+<h4> Other (нужно включать расширения)</h4>
+{#{% trans %}Hello, {{ user }}!{% endtrans %}#}
+{#<p>{% debug %}</p>#}
+{#{% with %}#}
+{#{% set test = 45 %}#}
+{#{{ test }} is 45 here#}
+{#{% endwith %}#}
+
+{#{% for number in range(10) %}#}
+{#    {% if number == 5 %}#}
+{#        {% continue %}#}
+{#    {% endif %}#}
+{#    <button>{{ number }}</button>#}
+{#{% endfor %}#}
 </body>
 </html>
