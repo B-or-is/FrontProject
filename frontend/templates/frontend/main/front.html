@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Тест header, footer, bootstrap</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Custom css -->
@@ -15,26 +15,19 @@
     <script type="text/javascript" src='{% static "js/Chart.min.js" %}'></script>
 </head>
 <body>
-{% include "main/header.html" %}
-    <h4>Выберите:</h4>
-{#    <a href="index.html"><h1>На главную страницу</h1></a>#}
-    Тест Front-End'а:
-    <ul>
-        <li><a href='admin'>Панель администратора</a></li>
-        <li><a href='template/jinja2/'>Тест Jinja Template</a></li>
-        <li><a href='template/django/'>Тест Django Template</a></li>
-{#        <li><a href= {% url 'jinja2' %}>Тест Jinja</a></li>#}
-    </ul>
+{% include "frontend/main/header.html" %}
 {% block content %}
     <div class="jumbotron text-center">
         <h1>My First Bootstrap Page</h1>
         {# <p>Resize this responsive page to see the effect!</p> #}
-        <p>10 случайных слов с <a href="https://raw.githubusercontent.com/sindresorhus/mnemonic-words/master/words.json">этого ресурса</a>:</p>
+        <p>10 случайных слов с <a
+                href="https://raw.githubusercontent.com/sindresorhus/mnemonic-words/master/words.json">этого
+            ресурса</a>:</p>
         {% for i in some_data %}
-            {{ i }}
+            {{ i }}<br>
         {% endfor %}
     </div>
 {% endblock %}
-{% include "main/footer.html" %}
+{% include "frontend/main/footer.html" %}
 </body>
 </html>

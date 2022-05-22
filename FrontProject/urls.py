@@ -13,9 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from front_1.views import Index, Report, LoginExample, \
+from .views import Index
+from frontend.views import Report, LoginExample, \
     ListExample, DetailViewExample, DateDetailViewExample, \
     WeekArchiveViewExample, DeleteExample, CreateViewExample, UpdateExample
 
@@ -32,5 +35,8 @@ urlpatterns = [
     path('create/', CreateViewExample.as_view(), name='create'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
     path('update/<pk>/', UpdateExample.as_view(), name='update'),
+    path('frontend/', include('frontend.urls')),
     path('template/', include('jinja_app.urls')),
-    ]
+    # path('mail', include('send_email.urls')),
+    # path('', include('reset_password_app.urls'))
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
