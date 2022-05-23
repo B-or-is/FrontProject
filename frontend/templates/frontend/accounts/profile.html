@@ -1,10 +1,13 @@
-{% extends 'main/../../../FrontProject/templates/main/index.html' %}
-{% load static %}
+{#{% extends 'main/test.html' %}#}
+{#{% extends 'main/index.html' %}#}
+{#{% load static %}#}
 
 
+<p><b>Список пользователей:</b></p>
 {% block content %}
     {% for element in users %}
-        <p>{{ element }}</p>
-        <p>{{ element.email }}</p>
+        <p>{{ element }}, {{ element.email }}</p>
     {% endfor %}
 {% endblock %}
+
+{% include 'frontend/footer.html' %}

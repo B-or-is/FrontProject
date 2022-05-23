@@ -2,22 +2,12 @@ import json
 import urllib.request
 import random
 
-from django.shortcuts import render
 from django.views.generic import (TemplateView, ListView, DetailView, DateDetailView,
                                   WeekArchiveView, DeleteView, CreateView, UpdateView, FormView)
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 
 from .forms import LoginForm, SignUpForm
-
-#
-# def front(request):
-#     print('front')
-#     return render(request, 'frontend/main/front.html')
-
-# class Index(TemplateView):
-#     template_name = 'index.html'
-    # template_name = 'frontend/main/index_front.html'
 
 
 url = urllib.request.urlopen("https://raw.githubusercontent.com/sindresorhus/mnemonic-words/master/words.json")
@@ -34,22 +24,39 @@ class BootstrapExample(TemplateView):
 
 
 class Report(TemplateView):
-    template_name = 'main/../FrontProject/templates/main/report.html'
+    template_name = 'frontend/main/report.html'
 
 
 class LoginExample(LoginView):
-    pass
+    template_name = 'frontend/registration/login.html'
 
 
 class ListExample(ListView):
     template_name = 'frontend/accounts/profile.html'
     queryset = User.objects.all()
+    # print(queryset)
     context_object_name = "users"
 
 
 class DetailViewExample(DetailView):
-    template_name = 'frontend/detail.html'
+    template_name = 'frontend/accounts/detail.html'
     model = User
+
+"""   Примеры работы с ключом
+views.py
+--------
+class ContactListView(generics.ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = UserContactListSerializer
+
+    def get(self, request, pk, *args, **kwargs):
+        contacts = Profile.objects.get(pk=pk)
+        serializer = UserContactListSerializer(contacts)
+        return Response(serializer.data)
+urls.py
+-------
+    url(r'^contact_list/(?P<pk>\d+)/$', ContactListView.as_view())
+"""
 
 
 class DateDetailViewExample(DateDetailView):

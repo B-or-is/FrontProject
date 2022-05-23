@@ -1,0 +1,10 @@
+{#{% extends 'main/index.html' %}#}
+<h4>Подробный отчет по пользователю</h4>
+{% block content %}
+    Пароль: <h4>{{ object.password }}</h4>
+    <p>E-mail: {{ object.email }}</p>
+    <p>Username: {{ object.username }}</p>
+    <p>Is active: {{ object.is_active }}</p>
+    <p>Date: {{ object.date_joined }}</p>
+{% endblock %}
+{% include 'frontend/footer.html' %}

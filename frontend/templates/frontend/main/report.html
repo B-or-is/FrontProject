@@ -1,7 +1,6 @@
-{% extends 'main/../../../FrontProject/templates/main/index.html' %}
-{% load static %}
+{% include 'frontend/header.html' %}
 
-
+<h4>Пример отчета (гистограмма)</h4>
 {% block content %}
     <canvas id="bar-chart" width="800" height="450"></canvas>
     <script>
@@ -21,9 +20,11 @@
                 legend: {display: false},
                 title: {
                     display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                    text: 'Рассчетное население в мире (млн) к 2050 г.'
                 }
             }
         });
     </script>
 {% endblock %}
+
+{% include 'frontend/footer.html' %}
