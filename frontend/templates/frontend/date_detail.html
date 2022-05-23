@@ -1,8 +1,10 @@
-{% extends 'main/index.html' %}
-
-{% block content %}
+{#{% extends 'main/index.html' %}#}
+<h4>Пример выборки по заданной дате</h4>
+{#{% block content %}#}
     <p>{{ object.email }}</p>
     <p>Username: {{ object.username }}</p>
     <p>Is active: {{ object.is_active }}</p>
     <p>Date: {{ object.date_joined }}</p>
-{% endblock %}
+{#{% endblock %}#}
+
+{% include 'frontend/footer.html' %}

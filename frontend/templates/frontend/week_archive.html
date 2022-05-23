@@ -1,10 +1,12 @@
-{% extends 'main/index.html' %}
+{#{% extends 'main/index.html' %}#}
+<b>Пример выборки за заданную неделю:</b>
+{#{% block content %}#}
+{% for object in week_users_archive %}
+    <p>{{ object.email }}</p>
+    <p>Username: {{ object.username }}</p>
+    <p>Is active: {{ object.is_active }}</p>
+    <p>Date: {{ object.date_joined }}</p>
+{% endfor %}
+{#{% endblock %}#}
 
-{% block content %}
-    {% for object in week_users_archive %}
-        <p>{{ object.email }}</p>
-        <p>Username: {{ object.username }}</p>
-        <p>Is active: {{ object.is_active }}</p>
-        <p>Date: {{ object.date_joined }}</p>
-    {% endfor %}
-{% endblock %}
+{% include 'frontend/footer.html' %}

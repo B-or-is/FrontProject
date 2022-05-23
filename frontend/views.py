@@ -59,22 +59,20 @@ urls.py
 """
 
 
+# Example http://127.0.0.1:8000/detail-date/2022/may/23/2
 class DateDetailViewExample(DateDetailView):
     template_name = 'frontend/date_detail.html'
     model = User
     date_field = "date_joined"
 
 
-# Example http://127.0.0.1:8000/detail-date/2020/feb/24/2
-
-
+# Example http://127.0.0.1:8000/week-archive/22
 class WeekArchiveViewExample(WeekArchiveView):
     template_name = 'frontend/week_archive.html'
-    year = 2020
+    year = 2022
     model = User
     date_field = "date_joined"
     context_object_name = "week_users_archive"
-#     http://127.0.0.1:8000/detail-date/2020/feb/24/2
 
 
 class CreateViewExample(CreateView):
@@ -83,6 +81,7 @@ class CreateViewExample(CreateView):
     success_url = '/'
 
 
+# Example http://127.0.0.1:8000/update/<pk>
 class UpdateExample(UpdateView):
     model = User
     form_class = SignUpForm
@@ -90,6 +89,7 @@ class UpdateExample(UpdateView):
     success_url = '/'
 
 
+# http://127.0.0.1:8000/delete/<pk>
 class DeleteExample(DeleteView):
     model = User
     form_class = SignUpForm

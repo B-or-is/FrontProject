@@ -8,21 +8,32 @@
 
 <h3>Тесты для FrontProject:</h3>
 <h4>
-{#    /frontend/templates/frontend/main/index_front.html'#}
+    {#    /frontend/templates/frontend/main/index_front.html'#}
     <ul>
         <li><a href='admin'>Панель администратора</a></li>
         <li><a href={% url 'create' %}>Новый пользователь</a></li>
+        <li><a href={% url 'update' 2 %}>Редактирование информации о пользователе</a></li>
+        <li><a href={% url 'delete' 2 %}>Удаление информации о пользователе</a></li>
         <li><a href={% url 'login' %}>Регистрация пользователя</a></li>
         <li><a href={% url 'all_users' %}>Просмотр всех пользователей</a></li>
         <li><a href={% url 'detail' 2 %}>Подробный отчет по 2-му пользователю</a></li>
+        <li><a href={% url 'detail_date' 2022 'may' 23 2 %}>Выборка по заданной дате</a></li>
+        <li><a href={% url 'week_archive' '22' %}>Выборка по номеру недели</a></li>
         <li><a href={% url 'front' %}>Тест header, footer, bootstrap</a></li>
-        <li><a href={% url 'report' %}>Пример отчета (гистограмма)</a></li>
+        <li><a href={% url 'report' %}>Пример построения гистограммы</a></li>
         {#        <li><a href='/jinja_app/templates/'>Тест Jinja Template</a></li>#}
         {#        <li><a href='template/django/'>Тест Django Template</a></li>#}
         {#        <li><a href='template/django/'>Тест Django Template</a></li>#}
         {#    <li><a href= {% url 'jinja2' %}>Тест Jinja</a></li>#}
 
     </ul>
+    <u><b>Примечание:</b></u><br>
+    Подробный отчет по пользователю: <b><code>http://127.0.0.1:8000/detail/&lt;pk&gt;</code></b>,
+    где <b><code>&lt;pk&gt;</code></b> - ключ пользователя в БД<br>
+    Редактирование информации о пользователе: <b><code>http://127.0.0.1:8000/update/&lt;pk&gt;</code></b><br>
+    Удаление информации о пользователе: <b><code>http://127.0.0.1:8000/delete/&lt;pk&gt;</code></b><br>
+    Выборка по заданной дате, например: <b><code>http://127.0.0.1:8000/detail-date/2022/may/23/2</code></b><br>
+    Выборка по номеру недели, например: <b><code>http://127.0.0.1:8000/week-archive/22/</code></b><br>
 </h4>
 
 </body>
