@@ -25,9 +25,10 @@ from frontend.views import Report, LoginExample, \
 urlpatterns = [
     path('', Index.as_view(), name='index'),
     path('admin/', admin.site.urls),
-    path('detail-date/<int:year>/<month>/<int:day>/<int:pk>/',
-         DateDetailViewExample.as_view(), name='detail_date'),
-    path('week-archive/<int:week>/', WeekArchiveViewExample.as_view(), name='week_archive'),
+    path('detail-date/<int:year>/<month>/<int:day>/<int:pk>/', DateDetailViewExample.as_view(), name='detail_date'),
+    # Example: /week-archive/2022/week/22/
+    path('week-archive/<int:year>/week/<int:week>/', WeekArchiveViewExample.as_view(), name="week_archive"),
+    # path('week-archive/<int:year>/week/<int:week>/', WeekArchiveViewExample.as_view(), name="week_archive"),
     path('create/', CreateViewExample.as_view(), name='create'),
     path('update/<pk>/', UpdateExample.as_view(), name='update'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),

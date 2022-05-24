@@ -42,22 +42,6 @@ class DetailViewExample(DetailView):
     template_name = 'frontend/accounts/detail.html'
     model = User
 
-"""   Примеры работы с ключом
-views.py
---------
-class ContactListView(generics.ListAPIView):
-    queryset = Profile.objects.all()
-    serializer_class = UserContactListSerializer
-
-    def get(self, request, pk, *args, **kwargs):
-        contacts = Profile.objects.get(pk=pk)
-        serializer = UserContactListSerializer(contacts)
-        return Response(serializer.data)
-urls.py
--------
-    url(r'^contact_list/(?P<pk>\d+)/$', ContactListView.as_view())
-"""
-
 
 # Example http://127.0.0.1:8000/detail-date/2022/may/23/2
 class DateDetailViewExample(DateDetailView):
@@ -66,13 +50,16 @@ class DateDetailViewExample(DateDetailView):
     date_field = "date_joined"
 
 
-# Example http://127.0.0.1:8000/week-archive/22
-class WeekArchiveViewExample(WeekArchiveView):
+# Example http://127.0.0.1:8000/week-archive/2022/week/21
+class WeekArchiveViewExample(WeekArchiveView):     # показывает все объекты за определенную неделю
     template_name = 'frontend/week_archive.html'
-    year = 2022
     model = User
     date_field = "date_joined"
-    context_object_name = "week_users_archive"
+    context_object_name = "week_users_archive"  # контекст для цикла в html
+
+    queryset = User.objects.all()
+    week_format = "%W"                  # неделя начинается в понедельник
+    allow_future = True                 # отображаются объекты с датой в будущем
 
 
 class CreateViewExample(CreateView):
@@ -95,3 +82,5 @@ class DeleteExample(DeleteView):
     form_class = SignUpForm
     template_name = 'signup.html'
     success_url = '/'
+
+

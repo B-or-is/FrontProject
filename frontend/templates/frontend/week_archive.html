@@ -1,12 +1,21 @@
 {#{% extends 'main/index.html' %}#}
-<b>Пример выборки за заданную неделю:</b>
+<b>Пример выборки за заданную неделю: {{ week|date:'W' }}</b>
 {#{% block content %}#}
 {% for object in week_users_archive %}
-    <p>{{ object.email }}</p>
-    <p>Username: {{ object.username }}</p>
-    <p>Is active: {{ object.is_active }}</p>
-    <p>Date: {{ object.date_joined }}</p>
+    <p>Email: {{ object.email }} Username: {{ object.username }} Is active: {{ object.is_active }}
+        Date: {{ object.date_joined }}</p>
 {% endfor %}
+
+<p>
+    {% if previous_week %}
+        Previous Week: {{ previous_week|date:"W" }} of year {{ previous_week|date:"Y" }}
+    {% endif %}
+    {% if previous_week and next_week %}--{% endif %}
+    {% if next_week %}
+        Next week: {{ next_week|date:"W" }} of year {{ next_week|date:"Y" }}
+    {% endif %}
+</p>
+
 {#{% endblock %}#}
 
 {% include 'frontend/footer.html' %}
