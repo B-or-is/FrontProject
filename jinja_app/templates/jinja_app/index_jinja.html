@@ -65,7 +65,7 @@
 {% set current_var = namespace(value=0) %}
 <p>current_var before {{ current_var.value }}</p>
 {% for i in my_var %}
-    <p>{{ i }}</p>
+    {{ i }}
     {% set current_var.value = i %}
 {% endfor %}
 <p>current_var after {{ current_var.value }}</p>
