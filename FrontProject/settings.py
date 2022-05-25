@@ -133,12 +133,12 @@ MEDIA_URL = '/test-email/images/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # GMAIL CONFIG
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'default from email'
+EMAIL_HOST = 'smtp.gmail.com'               # адрес хоста для отправки email
+EMAIL_PORT = 587                            # порт хоста
+EMAIL_HOST_USER = ''                        # логин пользователя хоста
+EMAIL_HOST_PASSWORD = ''                    # пароль пользователя хоста
+EMAIL_USE_TLS = True                        # использовать защищенное соединение
+DEFAULT_FROM_EMAIL = 'default from email'   # отправлять письма по умолчанию на данную почту
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

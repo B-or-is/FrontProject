@@ -34,6 +34,6 @@ urlpatterns = [
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
     path('frontend/', include('frontend.urls')),
     path('template/', include('jinja_app.urls')),
-    # path('mail', include('send_email.urls')),
+    path('mail', include('send_email.urls')),
     # path('', include('reset_password_app.urls'))
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
