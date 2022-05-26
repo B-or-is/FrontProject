@@ -1,8 +1,10 @@
 from django.urls import path, include
-from send_email.views import SendTemplateView
+# from send_email.views import SendTemplateView
+from send_email.views import contact_us
 
 urlpatterns = [
-    path('', SendTemplateView.as_view(), name='email'),
+    path('', contact_us, name='email'),
+    # path('', SendTemplateView.as_view(), name='email'),
 ]
 
 # urlpatterns = [
