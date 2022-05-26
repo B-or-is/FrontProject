@@ -2,7 +2,7 @@ from django.urls import path, include
 from send_email.views import SendTemplateView
 
 urlpatterns = [
-    path('test-email/', SendTemplateView.as_view(), name='email_template'),
+    path('', SendTemplateView.as_view(), name='email'),
 ]
 
 # urlpatterns = [

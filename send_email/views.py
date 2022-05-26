@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 
 class SendTemplateView(TemplateView):
-    template_name = 'hello_email.html'
+    template_name = 'send_email/hello_email.html'
 
     def get(self, request):
 
@@ -13,3 +13,4 @@ class SendTemplateView(TemplateView):
                   fail_silently=True)                   # при ошибке продолжить выполнение
 
         return render(request, self.template_name)
+

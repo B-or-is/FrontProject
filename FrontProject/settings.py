@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django_inlinecss',                     # библиотека для использования css в электронных письмах
     'FrontProject',
     'frontend',                             # работа с Front-end
     'jinja_app',                            # работа с Jinja2
