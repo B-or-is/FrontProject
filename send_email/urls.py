@@ -1,10 +1,15 @@
+from django.contrib import auth
 from django.urls import path, include
 # from send_email.views import SendTemplateView
-from send_email.views import contact_us
+from .views import contact, usersignup, activate_account
 
 urlpatterns = [
-    path('', contact_us, name='email'),
-    # path('', SendTemplateView.as_view(), name='email'),
+    path('', contact, name='email'),
+    # path('logout/', auth.LogoutView.as_view(template_name='index.html'), name='logout'),
+    path(r'signup/', usersignup, name='register_user'),                         # вход
+    # это адрес (линк), который приходит в почту после регистрации
+    path(r'activate/<uidb64>/<token>/', activate_account, name='activate'),   # активация аккаунта
+    # path("subscription/", subscription, name="subscription"),
 ]
 
 # urlpatterns = [
