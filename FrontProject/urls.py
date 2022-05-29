@@ -35,5 +35,5 @@ urlpatterns = [
     path('frontend/', include('frontend.urls')),
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),
-    # path('', include('reset_password_app.urls'))
+    path('reset/', include('reset_password_app.urls'))
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

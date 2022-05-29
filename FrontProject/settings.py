@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'frontend',                             # работа с Front-end
     'jinja_app',                            # работа с Jinja2
     'send_email',                           # отправка электронных писем
+    'reset_password_app',                   # сброс пароля
 ]
 
 MIDDLEWARE = [
