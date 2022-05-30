@@ -32,6 +32,7 @@ urlpatterns = [
     path('create/', CreateViewExample.as_view(), name='create'),
     path('update/<pk>/', UpdateExample.as_view(), name='update'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
+    path('login/', LoginExample.as_view(), name='login'),
     path('frontend/', include('frontend.urls')),
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),

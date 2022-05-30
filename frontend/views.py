@@ -64,7 +64,7 @@ class WeekArchiveViewExample(WeekArchiveView):     # показывает все
 
 class CreateViewExample(CreateView):
     form_class = SignUpForm
-    template_name = 'signup.html'
+    template_name = 'frontend/signup.html'
     success_url = '/'
 
 
@@ -72,7 +72,7 @@ class CreateViewExample(CreateView):
 class UpdateExample(UpdateView):
     model = User
     form_class = SignUpForm
-    template_name = 'signup.html'
+    template_name = 'frontend/signup.html'
     success_url = '/'
 
 
@@ -80,7 +80,7 @@ class UpdateExample(UpdateView):
 class DeleteExample(DeleteView):
     model = User
     form_class = SignUpForm
-    template_name = 'signup.html'
+    template_name = 'frontend/signup.html'
     success_url = '/'
 
 
