@@ -5,3 +5,5 @@ MarkupSafe~=2.1.1
 sqlparse~=0.4.2
 tzdata==2022.1
 six~=1.16.0
+graphene_django~=2.15.0
+django-graphql-jwt~=0.3.0

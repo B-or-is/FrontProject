@@ -17,6 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+
+# для GraphQL
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
+from .schema import scheme
+
 from .views import Index
 from frontend.views import Report, LoginExample, \
     ListExample, DetailViewExample, DateDetailViewExample, \
@@ -36,5 +42,6 @@ urlpatterns = [
     path('frontend/', include('frontend.urls')),
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),
-    path('reset/', include('reset_password_app.urls'))
+    path('reset/', include('reset_password_app.urls')),
+    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=scheme))),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
