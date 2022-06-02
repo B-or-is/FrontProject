@@ -7,3 +7,4 @@ tzdata==2022.1
 six~=1.16.0
 graphene_django~=2.15.0
 django-graphql-jwt~=0.3.0
+django-filter~=21.1
