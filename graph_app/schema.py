@@ -10,11 +10,11 @@ from .models import Car, Make, Model
 
 
 class Query(graphene.ObjectType):
-    make = graphene.relay.Node.Field(MakeType, id=graphene.Int())
-    makes = DjangoFilterConnectionField(MakeType)
+    # make = graphene.relay.Node.Field(MakeType, id=graphene.Int())
+    # makes = DjangoFilterConnectionField(MakeType)
 
-    # make = graphene.Field(MakeType, id=graphene.Int())
-    # makes = graphene.List(MakeType)                       # список всех производителей
+    make = graphene.Field(MakeType, id=graphene.Int())
+    makes = graphene.List(MakeType)                       # список всех производителей
 
     api_client = graphene.Field(UserType)
     api_clients = graphene.List(UserType)
