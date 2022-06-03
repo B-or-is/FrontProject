@@ -23,7 +23,7 @@ from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 from .schema import schema
 
-from .views import Index
+from .views import Index, url
 from frontend.views import Report, LoginExample, \
     ListExample, DetailViewExample, DateDetailViewExample, \
     WeekArchiveViewExample, DeleteExample, CreateViewExample, UpdateExample
@@ -43,5 +43,5 @@ urlpatterns = [
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),
     path('reset/', include('reset_password_app.urls')),
-    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
