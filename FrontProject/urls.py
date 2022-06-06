@@ -43,5 +43,5 @@ urlpatterns = [
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),
     path('reset/', include('reset_password_app.urls')),
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)), name='test_graphql'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
