@@ -44,15 +44,16 @@ INSTALLED_APPS = [
     'send_email',                           # отправка электронных писем
     'reset_password_app',                   # сброс пароля
     'graph_app',                            # пример приложения с GraphQL
-    'graphene_django',
+    # 'graphene_django',
 ]
 
-GRAPHENE = {
-    "SCHEMA": 'graph_app.schema.schema',
-    # "MIDDLEWARE": [
-    #     "graphql_jwt.middleware.JSONWebTokenMiddleware"
-    # ]
-}
+# GRAPHENE = {
+#     "SCHEMA": 'graph_app.schema.schema',
+#
+#     # "MIDDLEWARE": [
+#     #     "graphql_jwt.middleware.JSONWebTokenMiddleware"
+#     # ]
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

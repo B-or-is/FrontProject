@@ -4,11 +4,11 @@ from django.contrib import admin
 # Register your models here.
 
 
-from .models import Model, Make, Car    #, ApiClient
-
-admin.site.register(Make)
-admin.site.register(Model)
-admin.site.register(Car)
+# from .models import Model, Make, Car    #, ApiClient
+#
+# admin.site.register(Make)
+# admin.site.register(Model)
+# admin.site.register(Car)
 
 
 # class ApiClientAdmin(UserAdmin):

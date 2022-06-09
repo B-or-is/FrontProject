@@ -24,33 +24,33 @@ from django.db import models
 #         return f"{self.pk}_{self.email}"
 
 
-# производитель машины
-class Make(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
-# модель (название машины)
-class Model(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
-# машина
-class Car(models.Model):
-    license_plate = models.CharField(unique=True, max_length=10)    # номерной знак
-    notes = models.TextField()                                      # описание
-    make = models.ForeignKey(
-        Make, related_name="car_make", on_delete=models.CASCADE
-    )
-
-    model = models.ForeignKey(
-        Model, related_name="car_model", on_delete=models.CASCADE
-    )
-
-    def __str__(self):
-        return f"{self.license_plate}_{self.make.name}_{self.model.name}"
+# # производитель машины
+# class Make(models.Model):
+#     name = models.CharField(max_length=100)
+#
+#     def __str__(self):
+#         return self.name
+#
+#
+# # модель (название машины)
+# class Model(models.Model):
+#     name = models.CharField(max_length=100)
+#
+#     def __str__(self):
+#         return self.name
+#
+#
+# # машина
+# class Car(models.Model):
+#     license_plate = models.CharField(unique=True, max_length=10)    # номерной знак
+#     notes = models.TextField()                                      # описание
+#     make = models.ForeignKey(
+#         Make, related_name="car_make", on_delete=models.CASCADE
+#     )
+#
+#     model = models.ForeignKey(
+#         Model, related_name="car_model", on_delete=models.CASCADE
+#     )
+#
+#     def __str__(self):
+#         return f"{self.license_plate}_{self.make.name}_{self.model.name}"

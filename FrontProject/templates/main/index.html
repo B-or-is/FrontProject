@@ -26,7 +26,7 @@
         <li><a href={% url 'email' %}>Тест отправки электронных писем</a></li>
         <li><a href={% url 'register_user' %}>Активация пользователя через электронную почту</a></li>
         <li><a href={% url 'password_reset' %}>Сброс пароля пользователя</a></li>
-        <li><a href={% url 'test_graphql' %}>Тест GraphQL</a></li>
+        <li><a href={% url 'plug_graphql' %}>Тест GraphQL</a></li>
     </ul>
     <u><b>Примечание:</b></u><br>
     Подробный отчет по пользователю: <b><code>http://127.0.0.1:8000/detail/&lt;pk&gt;</code></b>,
@@ -35,6 +35,7 @@
     Удаление информации о пользователе: <b><code>http://127.0.0.1:8000/delete/&lt;pk&gt;</code></b><br>
     Выборка по заданной дате, например: <b><code>http://127.0.0.1:8000/detail-date/2022/may/23/2</code></b><br>
     Выборка по номеру недели, например: <b><code>http://127.0.0.1:8000/week-archive/2022/week/21</code></b><br>
+    В "Тест GraphQL" находится заглушка, т.к. на 06.22 библиотека graphene_django (v.2x) не поддерживала Django (v.4x)
 </h4>
 
 </body>

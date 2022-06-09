@@ -17,13 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import re_path
 
 # для GraphQL
 from django.views.decorators.csrf import csrf_exempt
-from graphene_django.views import GraphQLView
-from .schema import schema
-
+# from graphene_django.views import GraphQLView
+# from .schema import schema
 from .views import Index, url
+from graph_app.views import plug_graphql
 from frontend.views import Report, LoginExample, \
     ListExample, DetailViewExample, DateDetailViewExample, \
     WeekArchiveViewExample, DeleteExample, CreateViewExample, UpdateExample
@@ -34,7 +35,6 @@ urlpatterns = [
     path('detail-date/<int:year>/<month>/<int:day>/<int:pk>/', DateDetailViewExample.as_view(), name='detail_date'),
     # Example: /week-archive/2022/week/22/
     path('week-archive/<int:year>/week/<int:week>/', WeekArchiveViewExample.as_view(), name="week_archive"),
-    # path('week-archive/<int:year>/week/<int:week>/', WeekArchiveViewExample.as_view(), name="week_archive"),
     path('create/', CreateViewExample.as_view(), name='create'),
     path('update/<pk>/', UpdateExample.as_view(), name='update'),
     path('delete/<pk>/', DeleteExample.as_view(), name='delete'),
@@ -43,5 +43,6 @@ urlpatterns = [
     path('template/', include('jinja_app.urls')),
     path('email/', include('send_email.urls')),
     path('reset/', include('reset_password_app.urls')),
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)), name='test_graphql'),
+    # re_path(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=True)), name='test_graphql'),
+    re_path(r'^graphql', plug_graphql, name='plug_graphql'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
